@@ -1,0 +1,13 @@
+.DS_Store
+.tmp
+.idea
+.map
+
+*.log
+pids
+*.pid
+*.seed
+
+node_modules
+
+lib
