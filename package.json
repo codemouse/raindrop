@@ -1,14 +1,15 @@
 {
   "name": "raindrop",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Distributed id generation with customizable built-in attributes.",
   "main": "lib/raindrop.js",
   "author": "Brian Sodano (https://github.com/codemouse)",
   "keywords": [
     "id",
+    "raindrop",
+    "drop",
     "snowflake",
     "flake",
-    "raindrop",
     "distributed",
     "random"
   ],

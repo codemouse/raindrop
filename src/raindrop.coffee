@@ -54,7 +54,7 @@ encode = (arg) ->
   IntEncoder.encode(arg, 16)
 
 generate = (arg) ->
-  time = Date.now()
+  time = Date.now() / 1000
   time = parseInt(time, 10) % 0xFFFFFFFF
 
   sid = arg.serviceTypeId ? -1
@@ -75,14 +75,6 @@ isTinyInt = (arg) ->
 
 next = ->
   index = (index + 1) % 0xFFFFFF
-
-Raindrop.createFromTime = (time) ->
-  time = parseInt(time, 10) % 0xFFFFFFFF
-  new Raindrop(hex(8, time) + '0000000000000000')
-
-Raindrop.createFromHexString = (hexString) ->
-  throw new Error('Invalid Raindrop hex string')  unless Raindrop.isValid(hexString)
-  new Raindrop(hexString)
 
 Raindrop.isValid = (raindrop) ->
   return false  unless raindrop
