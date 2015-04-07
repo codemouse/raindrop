@@ -9,8 +9,8 @@ Raindrop = (arg) ->
 
   buf = undefined
   if _.isString(arg)
-    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and not Raindrop.isValid(decode(arg, 16))
-    buf = buffer(decode(arg), 16)
+    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and not Raindrop.isValid(decode(arg))
+    buf = buffer(decode(arg))
   else if _.isObject(arg)
     buf = buffer(generate(arg))
   else
@@ -27,7 +27,7 @@ Raindrop = (arg) ->
 
   Object.defineProperty this, 'estr',
     get: ->
-      encode(buf.map(hex.bind(this, 2)).join(''))
+      encode(buf.map(hex.bind(this, 2)).join '')
 
 index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
 machineId = parseInt(Math.random() * 0xFFFFFF, 10)
@@ -100,19 +100,19 @@ Raindrop:: =
     !!other and @str is other.toString()
 
   getTimestamp: ->
-    new Date(parseInt(@str.slice(0, 8), 16)* 1000).toISOString()
+    new Date(parseInt(@str.substr(0, 8), 16)* 1000).toISOString()
 
   getMachineId: ->
-    parseInt @str.slice(8, 6), 16
+    parseInt @str.substr(8, 6), 16
 
   getServiceId: ->
-    parseInt @str.slice(14, 2), 16
+    parseInt @str.substr(14, 2), 16
 
   getEntityTypeId: ->
-    parseInt @str.slice(16, 2), 16
+    parseInt @str.substr(16, 2), 16
 
   getRandomCounter: ->
-    parseInt @str.slice(18), 16
+    parseInt @str.substr(18), 16
 
 Raindrop::inspect = ->
   'Raindrop(' + this + ')'

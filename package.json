@@ -1,6 +1,6 @@
 {
   "name": "raindrop",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Distributed id generation with customizable built-in attributes.",
   "main": "lib/raindrop.js",
   "author": "Brian Sodano (https://github.com/codemouse)",
