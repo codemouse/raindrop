@@ -50,11 +50,8 @@ buffer = (str) ->
       i++
   out
 
-generate = (arg) ->
-  time = Date.now() / 1000
-  timestamp = parseInt(time, 10)
-
-  if  /object|undefined/.test(typeof lastTimestamp)
+cycle = (timestamp) ->
+  if /object|undefined/.test(typeof lastTimestamp)
     lastTimestamp = timestamp
 
   #change the counter every second
@@ -62,6 +59,9 @@ generate = (arg) ->
     lastTimestamp = timestamp
     index = parseInt(Math.random() * 0xFFFFFF, 10)
 
+generate = (arg) ->
+  timestamp = parseInt(Date.now() / 1000, 10)
+  cycle(timestamp)
   time = timestamp % 0xFFFFFFFF
 
   machineId = arg?.machineId ? Config.defaultMachineId
