@@ -15,7 +15,9 @@ The core hex identifier is represented with the following attributes:
 * 3-byte counter, starting with a random value
 
 This means the physical structure of the identifier's 5 components is:
-`FFFFFFFF FFFFFF FF FF FFFFFF`
+```
+FFFFFFFF FFFFFF FF FF FFFFFF
+```
 
 Raindrop is entirely deconstructable into its core values, to allow for the id to travel with key information regarding microservice origination id and domain-specific entity type identifiers.
 
