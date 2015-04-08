@@ -1,5 +1,7 @@
 IntEncoder = require 'int-encoder'
 
+IntEncoder.alphabet - 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+
 module.exports =
   decode: (arg) ->
     IntEncoder.decode(arg, 16)
