@@ -1,3 +1,5 @@
+'use strict'
+
 Pack = require '../package.json'
 Util = require './util'
 Config = require './config'
@@ -5,11 +7,14 @@ Config = require './config'
 Raindrop = (arg) ->
   return new Raindrop(arg)  unless @ instanceof Raindrop
 
-  return arg  if arg and ((arg instanceof Raindrop) or arg._type is 'Raindrop.' + Pack.version)
+  return arg  if arg and
+    ((arg instanceof Raindrop) or
+      arg.raindropType is version)
 
   buf = undefined
   if typeof arg is 'string'
-    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and not Raindrop.isValid(Util.decode(arg))
+    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and
+      not Raindrop.isValid(Util.decode(arg))
     buf = buffer(Util.decode(arg))
   else buf = buffer(generate(arg))  if /object|undefined/.test(typeof arg)
 
@@ -26,6 +31,7 @@ Raindrop = (arg) ->
     get: ->
       Util.encode(buf.map(hex.bind(@, 2)).join '')
 
+version = "Raindrop.#{Pack.version}"
 index = parseInt(Math.random() * 0xFFFFFF, 10)
 lastTimestamp = undefined
 
@@ -62,7 +68,7 @@ generate = (arg) ->
   sid = arg?.serviceTypeId ? Config.defaultSid
   eid = arg?.entityTypeId ? Config.defaultEid
 
-  throw new Error('Machine Id must be between 0 and 167772155')  if !(Util.isUmedInt(machineId))
+  throw new Error('Machine Id must be between 0 and 16,777,214')  if !(Util.isUmedInt(machineId))
   throw new Error('Service Id must be between 0 and 255')  if !(Util.isUtinyInt(sid))
   throw new Error('Entity Type Id must be between 0 and 255')  if !(Util.isUtinyInt(eid))
 
@@ -83,7 +89,7 @@ Raindrop.isValid = (raindrop) ->
 Raindrop.generate = generate
 
 Raindrop:: =
-  _type: 'Raindrop.' + Pack.version
+  raindropType: version
 
   toHexString: (decoded) ->
     if decoded then @str else @estr
@@ -107,7 +113,7 @@ Raindrop:: =
     parseInt @str.substr(18), 16
 
 Raindrop::inspect = ->
-  'Raindrop(' + @ + ')'
+  "Raindrop(#{@})"
 
 Raindrop::toString = Raindrop::toHexString
 

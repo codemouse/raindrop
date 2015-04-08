@@ -24,8 +24,8 @@ console.log (drop.toString());
 //get Raindrop Object as 24 character decoded hex string
 console.log (drop.toString(true));
 
-//get Type info (returns Raindrop Object version according to installed Node package)
-console.log("Type: " + drop._type);
+//get Type info (returns Raindrop Object type version according to installed Node package)
+console.log("Type: " + drop.raindropType);
 
 //get Timestamp portion up to the second as ISO 8601 date from UTC decoded
 console.log("Timestamp: " + drop.getTimestamp());
@@ -42,7 +42,7 @@ console.log("Entity Type Id: " + drop.getEntityTypeId());
 //get Counter decoded
 console.log("Counter: " + drop.getCounter());
 
-/*for (var i = 0; i < 100000; i++) {
- var drop = raindrop();
- console.log(drop.getRandomCounter())
+/*for (var i = 0; i < 100; i++) {
+ drop = raindrop();
+ console.log(drop.getCounter())
  }*/

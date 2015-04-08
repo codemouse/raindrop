@@ -1,6 +1,8 @@
+'use strict'
+
 IntEncoder = require 'int-encoder'
 
-IntEncoder.alphabet - 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+IntEncoder.alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
 
 module.exports =
   decode: (arg) ->
@@ -13,4 +15,4 @@ module.exports =
     arg >= 0 && arg <= 255
 
   isUmedInt: (arg) ->
-    arg >= 0 && arg <= 16777215
+    arg >= 0 && arg <= 16777214
