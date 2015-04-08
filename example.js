@@ -1,10 +1,17 @@
 var raindrop = require('./lib/raindrop');
 
-//set options for serviceTypeId and entityTypeId (1 - 255)
-var opt = {serviceTypeId: 1, entityTypeId: 4};
+//create new raindrop with defaults
+var drop = raindrop();
+
+//get Raindrop Object
+console.log (drop);
+
+//set options for serviceTypeId and entityTypeId (0 - 255)
+//set options for machineId (0 - 16777215)
+var opt = {serviceTypeId: 1, entityTypeId: 4, machineId: 478444};
 
 //create new raindrop with options
-var drop = raindrop(opt);
+drop = raindrop(opt);
 
 //get Raindrop Object
 console.log (drop);
@@ -32,5 +39,3 @@ console.log("Entity Type Id: " + drop.getEntityTypeId());
 
 //get RandomCounter decoded
 console.log("RandomCounter: " + drop.getRandomCounter());
-
-

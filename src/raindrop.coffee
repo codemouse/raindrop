@@ -1,36 +1,32 @@
-_ = require 'lodash'
-IntEncoder = require 'int-encoder'
 Pack = require '../package.json'
+Util = require './util'
+Config = require './config'
 
 Raindrop = (arg) ->
-  return new Raindrop(arg)  unless this instanceof Raindrop
+  return new Raindrop(arg)  unless @ instanceof Raindrop
 
   return arg  if arg and ((arg instanceof Raindrop) or arg._type is 'Raindrop.' + Pack.version)
 
   buf = undefined
-  if _.isString(arg)
-    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and not Raindrop.isValid(decode(arg))
-    buf = buffer(decode(arg))
-  else if _.isObject(arg)
-    buf = buffer(generate(arg))
-  else
-    throw new Error('Invalid argument passed. Must pass a single string of 16 characters, or arguments object containing serviceId and entityTypeId.')
+  if typeof arg is 'string'
+    throw new Error('Argument passed in must be a single string of 16 characters.')  if arg.length isnt 16 and not Raindrop.isValid(Util.decode(arg))
+    buf = buffer(Util.decode(arg))
+  else buf = buffer(generate(arg))  if /object|undefined/.test(typeof arg)
 
-  Object.defineProperty this, 'id',
+  Object.defineProperty @, 'id',
     enumerable: true
     get: ->
-      String.fromCharCode.apply this, buf
+      String.fromCharCode.apply @, buf
 
-  Object.defineProperty this, 'str',
+  Object.defineProperty @, 'str',
     get: ->
-      buf.map(hex.bind(this, 2)).join ''
+      buf.map(hex.bind(@, 2)).join ''
 
-  Object.defineProperty this, 'estr',
+  Object.defineProperty @, 'estr',
     get: ->
-      encode(buf.map(hex.bind(this, 2)).join '')
+      Util.encode(buf.map(hex.bind(@, 2)).join '')
 
-index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
-machineId = parseInt(Math.random() * 0xFFFFFF, 10)
+index = Raindrop.index = Config.defaultIndex
 
 buffer = (str) ->
   i = undefined
@@ -47,21 +43,17 @@ buffer = (str) ->
       i++
   out
 
-decode = (arg) ->
-  IntEncoder.decode(arg, 16)
-
-encode = (arg) ->
-  IntEncoder.encode(arg, 16)
-
 generate = (arg) ->
-  time = Date.now() / 1000
+  time = Config.defaultTime
   time = parseInt(time, 10) % 0xFFFFFFFF
 
-  sid = arg.serviceTypeId ? -1
-  eid = arg.entityTypeId ? -1
+  machineId = arg?.machineId ? Config.defaultMachineId
+  sid = arg?.serviceTypeId ? Config.defaultSid
+  eid = arg?.entityTypeId ? Config.defaultEid
 
-  throw new Error('Service Id must be between 1 and 255')  if !(isTinyInt(sid))
-  throw new Error('Entity Type Id must be between 1 and 255')  if !(isTinyInt(eid))
+  throw new Error('Machine Id must be between 0 and 167772155')  if !(Util.isUmedInt(machineId))
+  throw new Error('Service Id must be between 0 and 255')  if !(Util.isUtinyInt(sid))
+  throw new Error('Entity Type Id must be between 0 and 255')  if !(Util.isUtinyInt(eid))
 
   #FFFFFFFF FFFFFF FF FF FFFFFF
   hex(8, time) + hex(6, machineId) + hex(2, sid) + hex(2, eid) + hex(6, next())
@@ -69,9 +61,6 @@ generate = (arg) ->
 hex = (length, n) ->
   n = n.toString(16)
   (if (n.length is length) then n else '00000000'.substring(n.length, length) + n)
-
-isTinyInt = (arg) ->
-  arg >= 1 && arg <= 255
 
 next = ->
   index = (index + 1) % 0xFFFFFF
@@ -107,7 +96,7 @@ Raindrop:: =
     parseInt @str.substr(18), 16
 
 Raindrop::inspect = ->
-  'Raindrop(' + this + ')'
+  'Raindrop(' + @ + ')'
 
 Raindrop::toString = Raindrop::toHexString
 
