@@ -1,4 +1,6 @@
-var raindrop = require('./lib/raindrop');
+//TODO: write real tests :)
+
+var raindrop = require('../lib/raindrop');
 
 //create new raindrop with defaults
 var drop = raindrop();
@@ -22,7 +24,7 @@ console.log (drop.toString());
 //get Raindrop Object as 24 character decoded hex string
 console.log (drop.toString(true));
 
-//get Type info
+//get Type info (returns Raindrop Object version according to installed Node package)
 console.log("Type: " + drop._type);
 
 //get Timestamp portion up to the second as ISO 8601 date from UTC decoded

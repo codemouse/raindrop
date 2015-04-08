@@ -1,13 +1,20 @@
 {
   "name": "raindrop",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Distributed id generation with customizable built-in attributes.",
   "main": "index",
   "author": "Brian Sodano (http://codemouse.com)",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/codemouse/raindrop/blob/master/LICENSE"
+    }],
   "repository": {
     "type": "git",
     "url": "https://github.com/codemouse/raindrop"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
   },
   "keywords": [
     "id",
