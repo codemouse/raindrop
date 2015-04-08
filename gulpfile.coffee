@@ -18,8 +18,8 @@ Gulp.task 'eslint', ->
 
 Gulp.task 'lint', ['coffeelint', 'eslint']
 
-Gulp.task 'clean', () ->
-  Del ['./lib'], {force: true}
+Gulp.task 'clean', (cb) ->
+  Del ['./lib'], {force: true}, cb
 
 Gulp.task 'compile', ->
   Gulp.src(['./src/**/*.coffee'])
