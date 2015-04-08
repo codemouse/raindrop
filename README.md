@@ -4,7 +4,9 @@ Raindrop is a distributed id generation utility that mimics the MongoDB BSON Obj
 
 The identifier is a 24 character hex string that is automatically encoded into a compact 16 character string represented with the following alphabet:
 
-'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+```
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_
+```
 
 The core hex identifier is represented with the following attributes:
 
