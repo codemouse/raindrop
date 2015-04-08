@@ -1,8 +1,6 @@
 # Raindrop
 
-Raindrop is a distributed id generation utility that mimics the MongoDB BSON ObjectID implementation, with a few key tweaks.
-
-For information on the original ObjectID spec, see here: [ObjectID](http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification)
+Raindrop is a distributed id generation utility that mimics the MongoDB BSON [ObjectID](http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification) implementation, with a few key tweaks.
 
 The Raindrop id is a 24 character hex string that is automatically encoded into a compact 16 character string represented with the following alphabet:
 
@@ -26,9 +24,11 @@ FFFFFFFF FFFFFF FF FF FFFFFF
 Raindrop is entirely deconstructable into its core values, to allow for the id to travel with key information regarding microservice origination id and domain-specific entity type identifiers.
 
 ## Chance of collisions
-Raindrop ids that are generated are highly likely to be unique across collections. The 3-byte incrementing counter is set to a random value every second an operation is performed. Therefore, a total of 16,777,216 (medium int) ids - the starting random value counter could be inserted every second with the same machineId and the same microservice id, without chance of collision.
+Raindrop ids that are generated are highly likely to be unique across collections. The 3-byte incrementing counter is set to a random value every second an operation is performed. Therefore, a total of (16,777,216 - random counter start value) could be inserted every second with the same machineId and the same microservice id, without chance of collision.
   
-As long as machineId remains unique amongst all of your running processes, and your microserviceId is always registered as being unique, and you do not try to store more than (16,777,216 - random counter start value) / second ids per machineId, per microserviceId, you will avoid collisions.
+As long as machineId remains unique amongst all of your running processes, and your microservice id is always registered as being unique, and you do not try to store more than (16,777,216 - random counter start value) / second ids per machine id, per microservice id, you will avoid collisions.
+
+It's recommended to have your microservice instance pass in a machineId likely a combination of machine identifier / MAC address along with a process id such as a PM2 cluster process identifier.
 
 ## Install
     $ npm install raindrop
