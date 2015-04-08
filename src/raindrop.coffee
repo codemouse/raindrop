@@ -26,7 +26,8 @@ Raindrop = (arg) ->
     get: ->
       Util.encode(buf.map(hex.bind(@, 2)).join '')
 
-index = Raindrop.index = Config.defaultIndex
+index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
+lastTimestamp = undefined
 
 buffer = (str) ->
   i = undefined
@@ -44,8 +45,18 @@ buffer = (str) ->
   out
 
 generate = (arg) ->
-  time = Config.defaultTime
-  time = parseInt(time, 10) % 0xFFFFFFFF
+  time = Date.now() / 1000
+  timestamp = parseInt(time, 10)
+
+  if  /object|undefined/.test(typeof lastTimestamp)
+    lastTimestamp = timestamp
+
+  #change the counter every second
+  if timestamp > lastTimestamp
+    lastTimestamp = timestamp
+    index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
+
+  time = timestamp % 0xFFFFFFFF
 
   machineId = arg?.machineId ? Config.defaultMachineId
   sid = arg?.serviceTypeId ? Config.defaultSid
