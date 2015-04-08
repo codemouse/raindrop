@@ -1,8 +1,10 @@
 # Raindrop
 
-Raindrop is a distributed id generation utility that mimics the MongoDB BSON ObjectID implementation, with a few key tweaks.
+Raindrop is a distributed id generation utility that mimics the MongoDB ObjectID implementation, with a few key tweaks.
 
-The identifier is a 24 character hex string that is automatically encoded into a compact 16 character string represented with the following alphabet:
+For information on the original ObjectID spec, see here: [http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification]
+
+The Raindrop id is a 24 character hex string that is automatically encoded into a compact 16 character string represented with the following alphabet:
 
 ```
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_
@@ -23,7 +25,7 @@ FFFFFFFF FFFFFF FF FF FFFFFF
 
 Raindrop is entirely deconstructable into its core values, to allow for the id to travel with key information regarding microservice origination id and domain-specific entity type identifiers.
 
-#Getting Started
+##Getting Started
 
 Install the module with: npm install raindrop
 
