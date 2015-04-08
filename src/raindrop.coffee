@@ -26,7 +26,7 @@ Raindrop = (arg) ->
     get: ->
       Util.encode(buf.map(hex.bind(@, 2)).join '')
 
-index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
+index = parseInt(Math.random() * 0xFFFFFF, 10)
 lastTimestamp = undefined
 
 buffer = (str) ->
@@ -54,7 +54,7 @@ generate = (arg) ->
   #change the counter every second
   if timestamp > lastTimestamp
     lastTimestamp = timestamp
-    index = Raindrop.index = parseInt(Math.random() * 0xFFFFFF, 10)
+    index = parseInt(Math.random() * 0xFFFFFF, 10)
 
   time = timestamp % 0xFFFFFFFF
 
