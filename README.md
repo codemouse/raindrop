@@ -12,7 +12,7 @@ The core hex identifier is represented with the following attributes:
 
 * 4-byte value representing the seconds since the Unix epoch (32-bit timestamp down to the second)
 * 3-byte process identifier (defaults to random value or user input)
-* 1-byte microservice id (detaults to 0 or user input)
+* 1-byte microservice id (defaults to 0 or user input)
 * 1-byte entity type id (defaults to 0 or user input)
 * 3-byte incremental counter, reset every second to a random start value
 
