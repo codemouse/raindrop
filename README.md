@@ -74,6 +74,6 @@ console.log("Service Id: " + drop.getServiceId());
 //get EntityTypeId decoded
 console.log("Entity Type Id: " + drop.getEntityTypeId());
 
-//get RandomCounter decoded
-console.log("RandomCounter: " + drop.getRandomCounter());
+//get Counter decoded
+console.log("Counter: " + drop.getCounter());
 ```

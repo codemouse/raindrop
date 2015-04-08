@@ -103,7 +103,7 @@ Raindrop:: =
   getEntityTypeId: ->
     parseInt @str.substr(16, 2), 16
 
-  getRandomCounter: ->
+  getCounter: ->
     parseInt @str.substr(18), 16
 
 Raindrop::inspect = ->
