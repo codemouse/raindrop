@@ -64,16 +64,16 @@ generate = (arg) ->
   cycle(timestamp)
   time = timestamp % 0xFFFFFFFF
 
-  machineId = arg?.machineId ? Config.defaultMachineId
-  sid = arg?.serviceTypeId ? Config.defaultSid
+  pid = arg?.processId ? Config.defaultPid
+  sid = arg?.serviceId ? Config.defaultSid
   eid = arg?.entityTypeId ? Config.defaultEid
 
-  throw new Error('Machine Id must be between 0 and 16,777,214')  if !(Util.isUmedInt(machineId))
+  throw new Error('Process Id must be between 0 and 16,777,214')  if !(Util.isUmedInt(pid))
   throw new Error('Service Id must be between 0 and 255')  if !(Util.isUtinyInt(sid))
   throw new Error('Entity Type Id must be between 0 and 255')  if !(Util.isUtinyInt(eid))
 
   #FFFFFFFF FFFFFF FF FF FFFFFF
-  hex(8, time) + hex(6, machineId) + hex(2, sid) + hex(2, eid) + hex(6, next())
+  hex(8, time) + hex(6, pid) + hex(2, sid) + hex(2, eid) + hex(6, next())
 
 hex = (length, n) ->
   n = n.toString(16)
@@ -100,7 +100,7 @@ Raindrop:: =
   getTimestamp: ->
     new Date(parseInt(@str.substr(0, 8), 16)* 1000).toISOString()
 
-  getMachineId: ->
+  getProcessId: ->
     parseInt @str.substr(8, 6), 16
 
   getServiceId: ->

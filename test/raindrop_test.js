@@ -8,9 +8,9 @@ var drop = raindrop();
 //get Raindrop Object
 console.log (drop);
 
-//set options for serviceTypeId and entityTypeId (0 - 255)
-//set options for machineId (0 - 16777215)
-var opt = {serviceTypeId: 1, entityTypeId: 4, machineId: 478444};
+//set options for serviceId and entityTypeId (0 - 255)
+//set options for processId (0 - 16777215)
+var opt = {serviceId: 1, entityTypeId: 4, processId: 478444};
 
 //create new raindrop with options
 drop = raindrop(opt);
@@ -30,8 +30,8 @@ console.log("Type: " + drop.raindropType);
 //get Timestamp portion up to the second as ISO 8601 date from UTC decoded
 console.log("Timestamp: " + drop.getTimestamp());
 
-//get MachineId decoded
-console.log("Machine Id: " + drop.getMachineId());
+//get Process Id decoded
+console.log("Process Id: " + drop.getProcessId());
 
 //get ServiceId decoded
 console.log("Service Id: " + drop.getServiceId());
