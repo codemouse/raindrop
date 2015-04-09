@@ -54,9 +54,9 @@ var drop = raindrop();
 //get Raindrop Object
 console.log (drop);
 
-//set options for serviceTypeId and entityTypeId (0 - 255)
 //set options for processId (0 - 16777214)
-var opt = {serviceTypeId: 1, entityTypeId: 4, processId: 478444};
+//set options for serviceId and entityTypeId (0 - 255)
+var opt = {processId: 478444, serviceId: 1, entityTypeId: 4};
 
 //create new raindrop with options
 drop = raindrop(opt);
