@@ -1,5 +1,7 @@
 # Raindrop
 
+[![Build Status](https://travis-ci.org/codemouse/raindrop.svg?branch=master)](https://travis-ci.org/codemouse/raindrop)
+
 Raindrop is a distributed id generation utility that mimics the MongoDB BSON [ObjectID](http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification) implementation, with a few key tweaks.
 
 The Raindrop is a 24 character hex string that is automatically encoded into a compact 16 character string represented with the following alphabet:
