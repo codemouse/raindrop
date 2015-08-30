@@ -112,5 +112,5 @@ MIT ©2015 [codemouse](http://codemouse.com)
 [daviddm-peer-url]: https://david-dm.org/codemouse/raindrop#info=peerDependencies
 [daviddm-dev-image]: https://david-dm.org/codemouse/raindrop/dev-status.svg
 [daviddm-dev-url]: https://david-dm.org/codemouse/raindrop#info=devDependencies
-[codeclimate-image]: https://codeclimate.com/github/codemouse/raindrop/badges/gpa.svg
-[codeclimate-url]: https://codeclimate.com/github/codemouse/raindrop
+[codeclimate-image]: https://codeclimate.com/repos/55e3180f695680322801af11/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/repos/55e3180f695680322801af11
