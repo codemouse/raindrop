@@ -4,7 +4,7 @@
 [![Build Status][travis-image]][travis-url] 
 [![Code Climate][codeclimate-image]][codeclimate-url]
 
-[![Dependency status][david-dm-image]][david-dm-url] 
+[![Dependency status][daviddm-image]][daviddm-url] 
 [![peerDependency Status][daviddm-peer-image]][daviddm-peer-url]
 [![devDependency Status][daviddm-dev-image]][daviddm-dev-url]
 
