@@ -1,16 +1,12 @@
 # Raindrop
 
-[npm-url]: https://npmjs.org/package/raindrop
-[downloads-image]: http://img.shields.io/npm/dm/raindrop.svg
-[npm-image]: http://img.shields.io/npm/v/raindrop.svg
-[travis-url]: https://travis-ci.org/codemouse/raindrop
-[travis-image]: http://img.shields.io/travis/codemouse/raindrop.svg
-[david-dm-url]:https://david-dm.org/codemouse/raindrop
-[david-dm-image]:https://david-dm.org/codemouse/raindrop.svg
-[david-dm-dev-url]:https://david-dm.org/codemouse/raindrop#info=devDependencies
-[david-dm-dev-image]:https://david-dm.org/codemouse/raindrop/dev-status.svg
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] 
+[![Build Status][travis-image]][travis-url] 
+[![Code Climate][codeclimate-image]][codeclimate-url]
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url]
+[![Dependency status][david-dm-image]][david-dm-url] 
+[![peerDependency Status][daviddm-peer-image]][daviddm-peer-url]
+[![devDependency Status][daviddm-dev-image]][daviddm-dev-url]
 
 Raindrop is a distributed id generation utility that mimics the MongoDB BSON [ObjectID](http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification) implementation, with a few key tweaks.
 
@@ -44,7 +40,7 @@ As long as process id remains unique amongst all of your running processes, and 
 
 It's recommended to have your microservice instance pass in a process id likely a combination of machine identifier along with a process id such as a PM2 cluster process identifier.
 
-## Problems this is trying to solve
+## Motivation
 You may be asking yourself, why not just use a GUID? Or perhaps a UUID generator? Isn't that good enough?  Maybe. But what if you care about storing some embedded internal domain specific data within your identifier? Why not have your identifier provide some information to help you out?  Raindrop gives you:
 
 * Embeddable user-defined information to store 2 bytes of custom information, highly applicable across a tightly controlled microservice environment. Embed a marker with these attributes on issuing the id to help assist with type and service lookups later on.
@@ -100,3 +96,21 @@ console.log("Entity Type Id: " + drop.getEntityTypeId());
 //get Counter decoded
 console.log("Counter: " + drop.getCounter());
 ```
+
+## License
+
+MIT ©2015 [codemouse](http://codemouse.com)
+
+[npm-url]: https://npmjs.org/package/raindrop
+[downloads-image]: http://img.shields.io/npm/dm/raindrop.svg
+[npm-image]: http://img.shields.io/npm/v/raindrop.svg
+[travis-image]: http://img.shields.io/travis/codemouse/raindrop.svg
+[travis-url]: https://travis-ci.org/codemouse/raindrop
+[daviddm-image]: https://david-dm.org/codemouse/raindrop.svg
+[daviddm-url]: https://david-dm.org/codemouse/raindrop
+[daviddm-peer-image]: https://david-dm.org/codemouse/raindrop/peer-status.svg
+[daviddm-peer-url]: https://david-dm.org/codemouse/raindrop#info=peerDependencies
+[daviddm-dev-image]: https://david-dm.org/codemouse/raindrop/dev-status.svg
+[daviddm-dev-url]: https://david-dm.org/codemouse/raindrop#info=devDependencies
+[codeclimate-image]: https://codeclimate.com/github/codemouse/raindrop/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/codemouse/raindrop
