@@ -1,8 +1,8 @@
 # Raindrop
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] 
+
 [![Build Status][travis-image]][travis-url] 
-[![Code Climate][codeclimate-image]][codeclimate-url]
 
 [![Dependency status][daviddm-image]][daviddm-url] 
 [![peerDependency Status][daviddm-peer-image]][daviddm-peer-url]
@@ -112,5 +112,3 @@ MIT ©2015 [codemouse](http://codemouse.com)
 [daviddm-peer-url]: https://david-dm.org/codemouse/raindrop#info=peerDependencies
 [daviddm-dev-image]: https://david-dm.org/codemouse/raindrop/dev-status.svg
 [daviddm-dev-url]: https://david-dm.org/codemouse/raindrop#info=devDependencies
-[codeclimate-image]: https://codeclimate.com/repos/55e3180f695680322801af11/badges/gpa.svg
-[codeclimate-url]: https://codeclimate.com/repos/55e3180f695680322801af11
