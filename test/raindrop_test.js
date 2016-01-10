@@ -1,48 +1,47 @@
-//TODO: write real tests :)
+'use strict';
 
-var raindrop = require('../lib/raindrop');
+const raindrop = require('../lib/raindrop');
 
-//create new raindrop with defaults
-var drop = raindrop();
+// create new raindrop with defaults
+let drop = raindrop();
 
-//get Raindrop Object
-console.log (drop);
+// get Raindrop Object
+console.log(drop.id);
 
-//set options for serviceId and entityTypeId (0 - 255)
-//set options for processId (0 - 16777215)
-var opt = {serviceId: 1, entityTypeId: 4, processId: 478444};
+// set options for entityTypeId and serviceId (0 - 255)
+// set options for processId (0 - 16777215)
+const options = {
+  'entityTypeId': 3,
+  'processId': 78444,
+  'serviceId': 3
+};
 
-//create new raindrop with options
-drop = raindrop(opt);
+// create new raindrop with options
+drop = raindrop(options);
 
-//get Raindrop Object
-console.log (drop);
+// get Raindrop Object
+console.log(drop);
 
-//get Raindrop Object as 16 character string
-console.log (drop.toString());
+// get Raindrop Object as 16 character string
+console.log(drop.id);
 
-//get Raindrop Object as 24 character decoded hex string
-console.log (drop.toString(true));
+// get Raindrop Object as 24 character decoded hex string
+console.log(drop.hexDecodedString);
 
-//get Type info (returns Raindrop Object type version according to installed Node package)
-console.log("Type: " + drop.raindropType);
+// get Timestamp portion up to the second as ISO 8601 date from UTC decoded
+console.log(`Timestamp: ${drop.timestamp}`);
 
-//get Timestamp portion up to the second as ISO 8601 date from UTC decoded
-console.log("Timestamp: " + drop.getTimestamp());
+// get EntityTypeId decoded
+console.log(`Entity Type Id: ${drop.entityTypeId}`);
 
-//get Process Id decoded
-console.log("Process Id: " + drop.getProcessId());
+// get Process Id decoded
+console.log(`Process Id: ${drop.processId}`);
 
-//get ServiceId decoded
-console.log("Service Id: " + drop.getServiceId());
+// get ServiceId decoded
+console.log(`Service Id: ${drop.serviceId}`);
 
-//get EntityTypeId decoded
-console.log("Entity Type Id: " + drop.getEntityTypeId());
+// get Random decoded
+console.log(`Random: ${drop.random}`);
 
-//get Counter decoded
-console.log("Counter: " + drop.getCounter());
-
-/*for (var i = 0; i < 100; i++) {
- drop = raindrop();
- console.log(drop.getCounter())
- }*/
+// get Raindrop version info (returns Raindrop Object version)
+console.log(`Version: ${drop.version}`);
