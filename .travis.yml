@@ -1,13 +1,13 @@
 node_js:
   - "4.2"
-compiler: clang-3.7.1
+compiler: clang-3.7
 env:
-  - CXX=clang-3.7.1
+  - CXX=clang-3.7
 addons:
   apt:
     sources:
-      - llvm-toolchain-precise-3.7.1
+      - llvm-toolchain-precise-3.7
       - ubuntu-toolchain-r-test
     packages:
-      - clang-3.7.1
+      - clang-3.7
       - g++-4.8
