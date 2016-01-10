@@ -13,7 +13,7 @@
     "url": "https://github.com/codemouse/raindrop"
   },
   "engines": {
-    "node": ">=4.2.0"
+    "node": ">=4.2"
   },
   "keywords": [
     "id",
