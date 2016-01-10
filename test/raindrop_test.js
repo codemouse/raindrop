@@ -6,7 +6,7 @@ const raindrop = require('../lib/raindrop');
 let drop = raindrop();
 
 // get Raindrop Object
-console.log(drop.id);
+console.log(drop);
 
 // set options for entityTypeId and serviceId (0 - 255)
 // set options for processId (0 - 16777215)
