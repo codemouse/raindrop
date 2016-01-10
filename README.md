@@ -99,7 +99,7 @@ console.log("Counter: " + drop.getCounter());
 
 ## License
 
-MIT ©2015 [codemouse](http://codemouse.com)
+MIT ©2016 [codemouse](http://codemouse.com)
 
 [npm-url]: https://npmjs.org/package/raindrop
 [downloads-image]: http://img.shields.io/npm/dm/raindrop.svg
