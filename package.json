@@ -28,5 +28,8 @@
   ],
   "dependencies": {
     "int-encoder": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3"
   }
 }

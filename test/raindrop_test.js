@@ -1,12 +1,12 @@
-'use strict';
+'use strict'
 
-const raindrop = require('../lib/raindrop');
+const raindrop = require('../lib/raindrop')
 
 // create new raindrop with defaults
-let drop = raindrop();
+let drop = raindrop()
 
 // get Raindrop Object
-console.log(drop);
+console.log(drop)
 
 // set options for entityTypeId and serviceId (0 - 255)
 // set options for processId (0 - 16777215)
@@ -14,34 +14,37 @@ const options = {
   'entityTypeId': 3,
   'processId': 78444,
   'serviceId': 1
-};
+}
 
 // create new raindrop with options
-drop = raindrop(options);
+drop = raindrop(options)
 
-// get Raindrop Object
-console.log(drop);
+// get Raindrop object
+console.log(drop)
 
-// get Raindrop Object as 16 character string
-console.log(drop.id);
+// get Raindrop version info (returns Raindrop object version)
+console.log(`Version: ${drop.version}`)
 
-// get Raindrop Object as 24 character decoded hex string
-console.log(drop.hexDecodedString);
+// get Raindrop object Id as 16 character string
+console.log(drop.id)
 
-// get Timestamp portion up to the second as ISO 8601 date from UTC decoded
-console.log(`Timestamp: ${drop.timestamp}`);
+// get Raindrop object decoded properties
+console.log(drop.decoded())
 
-// get EntityTypeId decoded
-console.log(`Entity Type Id: ${drop.entityTypeId}`);
+// get Raindrop object as 24 character hex string
+console.log(drop.decoded().hexId)
+
+// get Timestamp portion up to the second as ISO 8601 date from UTC
+console.log(`Timestamp: ${drop.decoded().timestamp}`)
+
+// get Entity Type Id decoded
+console.log(`Entity Type Id: ${drop.decoded().entityTypeId}`)
 
 // get Process Id decoded
-console.log(`Process Id: ${drop.processId}`);
+console.log(`Process Id: ${drop.decoded().processId}`)
 
-// get ServiceId decoded
-console.log(`Service Id: ${drop.serviceId}`);
+// get Service Id decoded
+console.log(`Service Id: ${drop.decoded().serviceId}`)
 
 // get Random decoded
-console.log(`Random: ${drop.random}`);
-
-// get Raindrop version info (returns Raindrop Object version)
-console.log(`Version: ${drop.version}`);
+console.log(`Random: ${drop.decoded().random}`)
