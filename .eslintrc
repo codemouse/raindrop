@@ -175,7 +175,7 @@
     "quotes": [2, "single"],
     "require-jsdoc": 1,
     "semi-spacing": 2,
-    "semi": [2, "always"],
+    "semi": 0,
     "sort-vars": 2,
     "space-after-keywords": 2,
     "space-before-blocks": 2,
