@@ -48,3 +48,5 @@ console.log(`Service Id: ${drop.decoded().serviceId}`)
 
 // get Random decoded
 console.log(`Random: ${drop.decoded().random}`)
+
+console.log(drop.equals(drop))
