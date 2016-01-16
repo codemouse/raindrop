@@ -2,12 +2,6 @@
 
 const raindrop = require('../lib/raindrop')
 
-// create new raindrop with defaults
-let drop = raindrop()
-
-// get Raindrop Object
-console.log(drop)
-
 // set options for entityTypeId and serviceId (0 - 255)
 // set options for processId (0 - 16777215)
 const options = {
@@ -17,7 +11,7 @@ const options = {
 }
 
 // create new raindrop with options
-drop = raindrop(options)
+const drop = raindrop(options)
 
 // get Raindrop object
 console.log(drop)
@@ -49,4 +43,11 @@ console.log(`Service Id: ${drop.decoded().serviceId}`)
 // get Random decoded
 console.log(`Random: ${drop.decoded().random}`)
 
+// see if one Raindrop object equals another
+// true
 console.log(drop.equals(drop))
+
+const drop2 = raindrop(options)
+
+// false
+console.log(drop.equals(drop2))
