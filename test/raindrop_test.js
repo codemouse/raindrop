@@ -5,7 +5,7 @@ const raindrop = require('../lib/raindrop')
 // set options for entityTypeId and serviceId (0 - 255)
 // set options for processId (0 - 16777215)
 const options = {
-  'entityTypeId': 3,
+  'entityTypeId': 4,
   'processId': 78444,
   'serviceId': 1
 }
@@ -44,6 +44,7 @@ console.log(`Service Id: ${drop.decoded().serviceId}`)
 console.log(`Random: ${drop.decoded().random}`)
 
 // see if one Raindrop object equals another
+
 // true
 console.log(drop.equals(drop))
 
