@@ -8,6 +8,7 @@ const options = {
   'entityTypeId': 4,
   'processId': 78444,
   'serviceId': 1
+  // 'big': true
 }
 
 // create new raindrop with options
@@ -18,6 +19,9 @@ console.log(drop)
 
 // get Raindrop version info (returns Raindrop object version)
 console.log(`Version: ${drop.version}`)
+
+// get if Raindrop object is big Raindrop or not
+// console.log(`Big Raindrop: ${drop.big}`)
 
 // get Raindrop object Id as 16 character string
 console.log(drop.id)
