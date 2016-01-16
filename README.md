@@ -54,47 +54,58 @@ You may be asking yourself, why not just use a GUID? Or perhaps a UUID generator
 
 ## Usage
 ```javascript
-var raindrop = require('./lib/raindrop');
+const raindrop = require('../lib/raindrop')
 
-//create new raindrop with defaults
-var drop = raindrop();
+// set options for entityTypeId and serviceId (0 - 255)
+// set options for processId (0 - 16777215)
+const options = {
+  'entityTypeId': 4,
+  'processId': 7844,
+  'serviceId': 1
+}
 
-//get Raindrop Object
-console.log (drop);
+// create new raindrop with options
+const drop = raindrop(options)
 
-//set options for processId (0 - 16777214)
-//set options for serviceId and entityTypeId (0 - 255)
-var opt = {processId: 478444, serviceId: 1, entityTypeId: 4};
+// get Raindrop object
+console.log(drop)
 
-//create new raindrop with options
-drop = raindrop(opt);
+// get Raindrop version info (returns Raindrop object version)
+console.log(`Version: ${drop.version}`)
 
-//get Raindrop Object
-console.log (drop);
+// get Raindrop object id as 16 character string
+console.log(drop.id)
 
-//get Raindrop Object as 16 character string
-console.log (drop.toString());
+// get Raindrop object decoded properties
+console.log(drop.decoded())
 
-//get Raindrop Object as 24 character decoded hex string
-console.log (drop.toString(true));
+// get Raindrop object as 24 character hex string
+console.log(drop.decoded().hexId)
 
-//get Type info (returns Raindrop Object type version according to installed Node package)
-console.log("Type: " + drop.raindropType);
+// get timestamp portion up to the second as ISO 8601 date from UTC
+console.log(`Timestamp: ${drop.decoded().timestamp}`)
 
-//get Timestamp portion up to the second as ISO 8601 date from UTC decoded
-console.log("Timestamp: " + drop.getTimestamp());
+// get entity type id decoded
+console.log(`Entity Type Id: ${drop.decoded().entityTypeId}`)
 
-//get Process Id decoded
-console.log("Process Id: " + drop.getProcessId());
+// get process id decoded
+console.log(`Process Id: ${drop.decoded().processId}`)
 
-//get Service Id decoded
-console.log("Service Id: " + drop.getServiceId());
+// get service id decoded
+console.log(`Service Id: ${drop.decoded().serviceId}`)
 
-//get Entity Type Id decoded
-console.log("Entity Type Id: " + drop.getEntityTypeId());
+// get random decoded
+console.log(`Random: ${drop.decoded().random}`)
 
-//get Counter decoded
-console.log("Counter: " + drop.getCounter());
+// see if one Raindrop object equals another
+
+// true
+console.log(drop.equals(drop))
+
+const drop2 = raindrop(options)
+
+// false
+console.log(drop.equals(drop2))
 ```
 
 ## License

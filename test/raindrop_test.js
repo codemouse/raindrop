@@ -23,7 +23,7 @@ console.log(`Version: ${drop.version}`)
 // get if Raindrop object is big Raindrop or not
 // console.log(`Big Raindrop: ${drop.big}`)
 
-// get Raindrop object Id as 16 character string
+// get Raindrop object id as 16 character string
 console.log(drop.id)
 
 // get Raindrop object decoded properties
@@ -32,19 +32,19 @@ console.log(drop.decoded())
 // get Raindrop object as 24 character hex string
 console.log(drop.decoded().hexId)
 
-// get Timestamp portion up to the second as ISO 8601 date from UTC
+// get timestamp portion up to the second as ISO 8601 date from UTC
 console.log(`Timestamp: ${drop.decoded().timestamp}`)
 
-// get Entity Type Id decoded
+// get entity type id decoded
 console.log(`Entity Type Id: ${drop.decoded().entityTypeId}`)
 
-// get Process Id decoded
+// get process id decoded
 console.log(`Process Id: ${drop.decoded().processId}`)
 
-// get Service Id decoded
+// get service id decoded
 console.log(`Service Id: ${drop.decoded().serviceId}`)
 
-// get Random decoded
+// get random decoded
 console.log(`Random: ${drop.decoded().random}`)
 
 // see if one Raindrop object equals another
