@@ -5,7 +5,6 @@
 [![Build Status][travis-image]][travis-url] 
 
 [![Dependency status][daviddm-image]][daviddm-url] 
-[![peerDependency Status][daviddm-peer-image]][daviddm-peer-url]
 [![devDependency Status][daviddm-dev-image]][daviddm-dev-url]
 
 Raindrop is a distributed id generation utility that mimics the MongoDB BSON [ObjectID](http://docs.mongodb.org/manual/reference/object-id/#ObjectIDs-BSONObjectIDSpecification) implementation, with a few key tweaks.
@@ -126,7 +125,5 @@ MIT ©2016 [codemouse](http://codemouse.com)
 [travis-url]: https://travis-ci.org/codemouse/raindrop
 [daviddm-image]: https://david-dm.org/codemouse/raindrop.svg
 [daviddm-url]: https://david-dm.org/codemouse/raindrop
-[daviddm-peer-image]: https://david-dm.org/codemouse/raindrop/peer-status.svg
-[daviddm-peer-url]: https://david-dm.org/codemouse/raindrop#info=peerDependencies
 [daviddm-dev-image]: https://david-dm.org/codemouse/raindrop/dev-status.svg
 [daviddm-dev-url]: https://david-dm.org/codemouse/raindrop#info=devDependencies

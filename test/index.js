@@ -47,11 +47,11 @@ console.log(`service id: ${drop.decoded().serviceId}`)
 // get counter for that 1 second timestamp range decoded
 console.log(`counter: ${drop.decoded().counter}`)
 
-/*for (let i = 0; i < 100; i++) {
+/* for (let i = 0; i < 100; i++) {
   const x = raindrop(options)
 
   console.log(x.decoded().counter)
-}*/
+} */
 
 // see if one Raindrop object equals another
 
