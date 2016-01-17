@@ -23,6 +23,9 @@ console.log(`version: ${drop.version}`)
 // get Raindrop object id as 16 character string
 console.log(drop.id)
 
+// get Raindrop object materials property
+console.log(drop.materials)
+
 // get Raindrop object decoded properties
 console.log(drop.decoded())
 
@@ -44,11 +47,11 @@ console.log(`service id: ${drop.decoded().serviceId}`)
 // get counter for that 1 second timestamp range decoded
 console.log(`counter: ${drop.decoded().counter}`)
 
-for (let i = 0; i < 100; i++) {
+/*for (let i = 0; i < 100; i++) {
   const x = raindrop(options)
 
   console.log(x.decoded().counter)
-}
+}*/
 
 // see if one Raindrop object equals another
 
