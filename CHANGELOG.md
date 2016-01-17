@@ -1,4 +1,4 @@
-** 1.0.0 (2016-01-16)
+## 1.0.0 (2016-01-16)
 
 # removed CoffeeScript and CoffeeLint dependencies
 # remove Gulp dependency
