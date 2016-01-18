@@ -1,3 +1,10 @@
+# 1.0.3 (2016-01-18)
+
+* removed unnecessary buffer function (legacy)
+* organized code to util functions and some renames
+* removed hexId from decoded func response
+
+
 # 1.0.2 (2016-01-17)
 
 * moved mutable data values to separate namespace
