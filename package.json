@@ -1,6 +1,6 @@
 {
   "name": "raindrop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Distributed id generation with customizable built-in attributes.",
   "main": "index",
   "author": {

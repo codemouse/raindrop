@@ -23,14 +23,14 @@ console.log(`version: ${drop.version}`)
 // get Raindrop object id as 16 character string
 console.log(drop.id)
 
+// get Raindrop object as 24 character hex string
+console.log(drop.hexId)
+
 // get Raindrop object materials property
 console.log(drop.materials)
 
 // get Raindrop object decoded properties
 console.log(drop.decoded())
-
-// get Raindrop object as 24 character hex string
-console.log(drop.decoded().hexId)
 
 // get timestamp portion up to the second as ISO 8601 date from UTC
 console.log(`timestamp: ${drop.decoded().timestamp}`)
