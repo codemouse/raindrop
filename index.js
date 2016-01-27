@@ -1,3 +1,3 @@
-'use strict';
+'use strict'
 
-module.exports = require('./lib/raindrop');
+module.exports = require('./lib/raindrop')
