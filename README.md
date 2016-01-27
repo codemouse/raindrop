@@ -4,6 +4,8 @@
 
 [![Build Status][travis-image]][travis-url] 
 
+[![Coverage Status](https://coveralls.io/repos/github/codemouse/raindrop/badge.svg?branch=master)](https://coveralls.io/github/codemouse/raindrop?branch=master)
+
 [![Dependency status][daviddm-image]][daviddm-url] 
 [![devDependency Status][daviddm-dev-image]][daviddm-dev-url]
 
