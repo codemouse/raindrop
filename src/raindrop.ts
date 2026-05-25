@@ -45,17 +45,13 @@ interface Materials {
   counter: number;
 }
 
-const isEqual = (hexId: string, ver: string, drop2: Drop): boolean => {
-  if (util.isNil(drop2?.hexId) || util.isNil(drop2?.version)) {
-    return false;
-  }
-  return hexId === drop2.hexId && ver === drop2.version;
-};
+const isEqual = (hexId: string, ver: string, drop2: Drop): boolean =>
+  drop2 != null && hexId === drop2.hexId && ver === drop2.version;
 
 const getCounter = (): number => randomInt(constants.uMedIntMax + 1);
 
 const getNextCounter = (): number => {
-  const current = shared.counterStart ?? 0;
+  const current = shared.counterStart;
   shared.counterStart = (current + 1) % (constants.uMedIntMax + 1);
   return current;
 };
@@ -63,7 +59,7 @@ const getNextCounter = (): number => {
 const getMaterials = (arg: RaindropOptions | undefined, date: number): Materials => {
   const timestamp = util.getTimestampNoMs(date);
 
-  if (timestamp > (shared.lastTimestamp ?? -1)) {
+  if (timestamp > shared.lastTimestamp) {
     shared.lastTimestamp = timestamp;
     shared.counterStart = getCounter();
   }

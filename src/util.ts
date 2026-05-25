@@ -2,11 +2,8 @@ import { second, radix16, uIntMax } from './constants';
 
 const min = 0;
 
-export const isNil = (val: unknown): val is null | undefined =>
-  typeof val === 'undefined' || val === null;
-
 const isValidInRange = (num: number, max: number): boolean =>
-  !isNaN(num) && num >= min && num <= max;
+  num >= min && num <= max;
 
 export const isValid = (val: unknown, max: number): void => {
   if (!isValidInRange(val as number, max)) {

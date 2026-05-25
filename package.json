@@ -1,13 +1,45 @@
 {
   "name": "raindrop",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Distributed id generation with customizable built-in attributes.",
-  "author": "Brian Sodano",
+  "keywords": [
+    "id",
+    "objectid",
+    "bson",
+    "raindrop",
+    "drop",
+    "snowflake",
+    "flake",
+    "distributed",
+    "random"
+  ],
+  "author": {
+    "name": "Brian Sodano",
+    "url": "codemouse.com"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codemouse/raindrop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codemouse/raindrop/issues"
+  },
+  "homepage": "https://github.com/codemouse/raindrop#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint src",
+    "prepublishOnly": "npm run lint && npm run build",
     "test": "ts-node -T test/raindrop.test.ts",
+    "test:coverage": "c8 --include='src/**/*.ts' --reporter=text --reporter=lcov ts-node -T test/raindrop.test.ts",
     "example": "ts-node -T examples/basic.ts"
   },
   "dependencies": {
@@ -15,6 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.0.0",
+    "c8": "^10.1.3",
     "eslint": "^10.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.0",

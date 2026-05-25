@@ -1,9 +1,9 @@
 interface SharedState {
-  lastTimestamp: number | null;
-  counterStart: number | null;
+  lastTimestamp: number;
+  counterStart: number;
 }
 
 export const shared: SharedState = {
-  lastTimestamp: null,
-  counterStart: null,
+  lastTimestamp: -1,
+  counterStart: 0,
 };
