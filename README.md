@@ -54,69 +54,115 @@ npm install raindrop
 
 ## Usage
 
+### Zero-config
+
+All fields default to 0 / a random process id. Useful for prototyping.
+
 ```typescript
 import raindrop from 'raindrop';
 
-// set options for entityTypeId (0 - 255)
-// set options for processId (0 - 16777215)
-// set options for serviceId (0 - 255)
-const options = {
-  entityTypeId: 4,
-  processId: 7844,
-  serviceId: 1,
+const drop = raindrop();
+
+console.log(drop.id);       // 16-char URL-safe string  e.g. "hI6vYt3mQpLwXs9n"
+console.log(drop.hexId);    // 24-char hex              e.g. "68334a5e000000000000b2f1"
+console.log(drop.version);  // semver string             e.g. "1.1.2"
+```
+
+### Service-aware ID
+
+Real services should pin `processId` (machine + pid combo), `serviceId`, and `entityTypeId` so that IDs are decodable back to their origin.
+
+```typescript
+import raindrop from 'raindrop';
+import type { RaindropOptions } from 'raindrop';
+
+const opts: RaindropOptions = {
+  processId:    7844,  // 0 – 16 777 215  (e.g. machine-id XOR process pid)
+  serviceId:    1,     // 0 – 255
+  entityTypeId: 4,     // 0 – 255
 };
 
-// create new raindrop with options
-const drop = raindrop(options);
+const drop = raindrop(opts);
 
-// get Raindrop object
-console.log(drop);
-
-// get Raindrop version info (returns Raindrop object version)
-console.log(`version: ${drop.version}`);
-
-// get Raindrop object id as 16 character string
-console.log(drop.id);
-
-// get Raindrop object as 24 character hex string
-console.log(drop.hexId);
-
-// get Raindrop object materials property
+console.log(drop.id);        // "hI6vYt3mQpLwXs9n"
 console.log(drop.materials);
-
-// get Raindrop object decoded properties
-console.log(drop.decoded());
-
-// get timestamp portion up to the second as ISO 8601 date from UTC
-console.log(`timestamp: ${drop.decoded().timestamp}`);
-
-// get entity type id decoded
-console.log(`entity type id: ${drop.decoded().entityTypeId}`);
-
-// get process id decoded
-console.log(`process id: ${drop.decoded().processId}`);
-
-// get service id decoded
-console.log(`service id: ${drop.decoded().serviceId}`);
-
-// get counter for that 1 second timestamp range decoded
-console.log(`counter: ${drop.decoded().counter}`);
-
-// see if one Raindrop object equals another
-
-// true
-console.log(drop.equals(drop));
-
-const drop2 = raindrop(options);
-
-// false
-console.log(drop.equals(drop2));
+// {
+//   timestamp:    "2026-05-25T00:00:00.000Z",
+//   processId:    7844,
+//   serviceId:    1,
+//   entityTypeId: 4,
+//   counter:      11506031
+// }
 ```
+
+### Decoding
+
+`decoded()` reconstructs every field from the hex string alone — no database round-trip needed.
+
+```typescript
+const decoded = drop.decoded();
+
+console.log(decoded.timestamp);    // "2026-05-25T00:00:00.000Z"  (ISO-8601, second precision)
+console.log(decoded.processId);    // 7844
+console.log(decoded.serviceId);    // 1
+console.log(decoded.entityTypeId); // 4
+console.log(decoded.counter);      // 11506031
+```
+
+### Equality
+
+`equals()` compares both `id` and library version, so IDs from different package versions never silently compare as equal.
+
+```typescript
+const other = raindrop(opts);
+
+console.log(drop.equals(drop));   // true
+console.log(drop.equals(other));  // false
+```
+
+### Bulk generation
+
+The counter increments monotonically within a second, so bulk IDs remain orderable by insertion time even in tight loops.
+
+```typescript
+const batch = Array.from({ length: 5 }, () => raindrop(opts));
+
+batch.forEach((d, i) =>
+  console.log(`[${i}] ${d.id}  counter=${d.decoded().counter}`)
+);
+// [0] hI6vYt3mQpLwXs9n  counter=11506031
+// [1] hI6vYt3mQpLwXs9o  counter=11506032
+// [2] hI6vYt3mQpLwXs9p  counter=11506033
+// [3] hI6vYt3mQpLwXs9q  counter=11506034
+// [4] hI6vYt3mQpLwXs9r  counter=11506035
+```
+
+> Run `npm run example` to execute a live demo covering all of the above.
+
+## API
+
+| Property / Method | Type | Description |
+|---|---|---|
+| `id` | `string` | 16-character URL-safe encoded ID |
+| `hexId` | `string` | 24-character lowercase hex representation |
+| `version` | `string` | Raindrop library version (semver) |
+| `materials` | `RaindropMaterials` | Raw fields used to construct this ID |
+| `decoded()` | `() => DecodedMaterials` | Deconstructs `hexId` back into its component fields |
+| `equals(drop)` | `(Drop) => boolean` | Returns `true` if both IDs and versions match |
+
+### Options (`RaindropOptions`)
+
+| Field | Type | Range | Default |
+|---|---|---|---|
+| `entityTypeId` | `number` | 0 – 255 | `0` |
+| `processId` | `number` | 0 – 16 777 215 | random |
+| `serviceId` | `number` | 0 – 255 | `0` |
 
 ## License
 
 MIT ©2026 [codemouse](http://codemouse.com)
 
 [npm-url]: https://npmjs.org/package/raindrop
-[downloads-image]: http://img.shields.io/npm/dm/raindrop.svg
-[npm-image]: http://img.shields.io/npm/v/raindrop.svg
+[downloads-image]: https://img.shields.io/npm/dm/raindrop.svg
+[npm-image]: https://img.shields.io/npm/v/raindrop.svg
+
