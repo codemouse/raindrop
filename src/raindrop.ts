@@ -46,28 +46,18 @@ interface Materials {
 }
 
 const isEqual = (hexId: string, ver: string, drop2: Drop): boolean => {
-  const id2 = drop2?.id;
-
-  if (util.isNil(id2)) {
+  if (util.isNil(drop2?.hexId) || util.isNil(drop2?.version)) {
     return false;
   }
-
-  const version2 = drop2?.version;
-
-  if (util.isNil(version2)) {
-    return false;
-  }
-
-  const hexId2 = encoder.decode(id2);
-
-  return hexId === hexId2 && ver === version2;
+  return hexId === drop2.hexId && ver === drop2.version;
 };
 
-const getCounter = (): number => randomInt(constants.uMedIntMax);
+const getCounter = (): number => randomInt(constants.uMedIntMax + 1);
 
 const getNextCounter = (): number => {
-  shared.counterStart = ((shared.counterStart ?? 0) + 1) % constants.uMedIntMax;
-  return shared.counterStart;
+  const current = shared.counterStart ?? 0;
+  shared.counterStart = (current + 1) % (constants.uMedIntMax + 1);
+  return current;
 };
 
 const getMaterials = (arg: RaindropOptions | undefined, date: number): Materials => {
@@ -119,12 +109,12 @@ const getRaindropHexString = (materials: Materials): string =>
   util.getMaskedHexString(config.counterBitSize, materials.counter);
 
 export const raindrop = (arg?: RaindropOptions): Drop => {
+  util.isValid(arg?.entityTypeId ?? 0, constants.uTinyIntMax);
+  util.isValid(arg?.processId ?? 0, constants.uMedIntMax);
+  util.isValid(arg?.serviceId ?? 0, constants.uTinyIntMax);
+
   const date = Date.now();
   const materials = getMaterials(arg, date);
-
-  util.isValid(materials.entityTypeId ?? 0, constants.uTinyIntMax);
-  util.isValid(materials.processId ?? 0, constants.uMedIntMax);
-  util.isValid(materials.serviceId ?? 0, constants.uTinyIntMax);
 
   const hexId = getRaindropHexString(materials);
   const id = encoder.encode(hexId);

@@ -2,34 +2,8 @@
   "name": "raindrop",
   "version": "1.1.0",
   "description": "Distributed id generation with customizable built-in attributes.",
-  "keywords": [
-    "id",
-    "objectid",
-    "bson",
-    "raindrop",
-    "drop",
-    "snowflake",
-    "flake",
-    "distributed",
-    "random"
-  ],
-  "author": {
-    "name": "Brian Sodano",
-    "url": "codemouse.com"
-  },
+  "author": "Brian Sodano",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codemouse/raindrop.git"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint src",
@@ -40,10 +14,10 @@
     "int-encoder": "^1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
-    "eslint": "^9.0.0",
+    "@types/node": "^25.0.0",
+    "eslint": "^10.4.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.0.0",
+    "typescript": "^6.0.0",
     "typescript-eslint": "^8.0.0"
   }
 }
